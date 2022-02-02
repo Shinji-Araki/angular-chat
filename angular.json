@@ -27,9 +27,16 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "firebase",
+              "@firebase/auth",
+              "@firebase/database"
+            ]
           },
           "configurations": {
             "production": {
@@ -97,6 +104,16 @@
               "src/styles.css"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "angular-chat:build:production",
+            "firebaseProject": "angular-chat-b5ff1",
+            "firebaseHostingSite": "angular-chat-b5ff1"
           }
         }
       }

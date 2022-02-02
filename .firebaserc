@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "angular-chat-b5ff1",
+    "angular-chat": "angular-chat-b5ff1"
+  },
+  "targets": {
+    "angular-chat-b5ff1": {
+      "hosting": {
+        "angular-chat": [
+          "angular-chat-b5ff1"
+        ]
+      }
+    }
+  }
+}

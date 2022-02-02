@@ -1,0 +1,21 @@
+<section class="container">
+    <ng-container *ngIf="user$ | async as user">
+      <div class="image">
+        <img src="//placehold.jp/150x150.png" class="rounded-circle" alt="{{ user.displayName }}">
+      </div>
+      <div class="form-group">
+        <div class="form-title">【名前】</div>
+        <p>{{ user.displayName }}</p>
+      </div>
+      <div class="form-group">
+        <div class="form-title">【ID】</div>
+        <p>{{ user.uid }}</p>
+      </div>
+      <div class="form-group">
+        <div class="form-title">【メールアドレス】</div>
+        <p>{{ user.email }}</p>
+      </div>
+      <a href="#" class="btn btn-primary btn-lg" (click)="goBack($event)">戻る</a>
+    </ng-container>
+  </section>
+  

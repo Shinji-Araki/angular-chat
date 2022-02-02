@@ -1,0 +1,10 @@
+.page {
+    overflow: scroll;
+    max-width: 960px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 10px 0;
+    background-color: #fff;
+    border-left: 1px solid #DDDDDD;
+    border-right: 1px solid #DDDDDD;
+  }

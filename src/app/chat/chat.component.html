@@ -1,0 +1,87 @@
+<ng-template #welcome>
+  <div class="welcome">
+    <div class="jumbotron jumbotron-fluid p-5 border border-secondary bg-light">
+      <div class="container">
+        <h1 class="display-3">Angular Chat!</h1>
+        <p class="w-100">
+          <a href="/signup">新規登録</a>、または<a href="/login">ログイン</a>して始めましょう！
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<div *ngIf="currentUser$ | async; else welcome" class="chat-container">
+  <ac-user-list></ac-user-list>
+
+  <div class="content">
+  <section class="chat">
+     <div class="chat-timeline">
+       <div
+         *ngFor="let comment of comment$ | async" 
+         class="list-group-item list-group-item-action flex-column align-items-start border-0"
+       >
+         <div class="media">
+           <div 
+             *ngIf="comment.user.uid !== currentUser.uid"
+             class="media-left"
+           >
+             <a href="#" class="icon">{{ comment.user.initial }}</a>
+           </div>
+           <div class="media-body">
+             <div class="d-flex w-100 justify-content-between">
+               <h4 class="media-heading">{{ comment.user.displayName }}
+                 <ng-container *ngIf="comment.user.uid === currentUser.uid">
+                   <i class="fa fa-edit ml-2" title="編集" (click)="comment.isEdit = !comment.isEdit"></i>
+                   <i class="fa fa-trash ml-2" title="削除" (click)="deleteComment(comment)"></i>
+                 </ng-container>
+               </h4>
+               <small class="media-date">{{ comment.date | commentDate }}</small>
+             </div>
+             <ng-container *ngIf="!comment.isEdit">
+               <pre>{{ comment.message }}</pre>
+             </ng-container>
+             <ng-container *ngIf="comment.isEdit">
+               <div class="input-group">
+                 <textarea [(ngModel)]="comment.message" name="edit-comment" class="form-control">                </textarea>
+               </div>
+               <div class="edit-button">
+                 <button class="btn btn-success btn-sm" (click)="updateComment(comment)">保存</button>
+                 <button class="btn btn-warning btn-sm" (click)="comment.isEdit = false">キャンセル</button>
+               </div>
+             </ng-container>
+             </div>
+           <div 
+               *ngIf="comment.user.uid === currentUser.uid"
+               class="media-right"
+             >
+               <a href="#" class="icon">{{ comment.user.initial }}</a>
+           </div>
+         </div>
+       </div>
+     </div>
+   </section>
+   <section class="chat-editor">
+     <form class="chat-form">
+       <div class="form-header d-flex flex-row-reverse mb-2">
+         <span class="input-group-btn">
+           <button 
+             (click)="addComment(comment)"
+             class="btn btn-info btn-sm" 
+             type="submit" 
+             tabindex="2"
+           >送信</button></span>
+       </div>
+       <div class="input-group">
+         <textarea 
+           [(ngModel)]="comment"
+           name="comment"
+           class="form-control" 
+           placeholder="メッセージを入力" 
+           tabindex="1"
+         ></textarea>
+       </div>
+     </form>
+   </section>
+  </div>  
+</div>

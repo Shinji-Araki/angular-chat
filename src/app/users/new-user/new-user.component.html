@@ -1,0 +1,10 @@
+<div class="container">
+    <form #form="ngForm" (ngSubmit)="submit(form)">
+      <h2 class="heading">ユーザー情報登録</h2>
+      <div class="form-group">
+        <input ngModel type="text" name="displayName" id="displayName" class="form-control" placeholder="名前を入力" required>
+      </div>
+      <button class="btn btn-lg btn-info btn-lg" type="submit">OK</button>
+    </form>
+  </div>
+  

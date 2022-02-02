@@ -1,0 +1,26 @@
+.container {
+    margin-top: 50px;
+    margin-bottom: 30px;
+  }
+  
+  .image {
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 2rem;
+    padding: 20px;
+    border-radius: 3px;
+    background-color: #fcfcfc;
+  }
+  
+  .form-group .form-title {
+    margin-bottom: 0.7rem;
+    font-size: 1.05rem;
+  }
+  
+  .form-group p {
+    margin-bottom: 0;
+  }
+  
